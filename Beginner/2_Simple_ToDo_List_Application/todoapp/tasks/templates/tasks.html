@@ -7,5 +7,10 @@
 </head>
 <body>
     <h1>This is a task page</h1>
+    {% for task in tasks %}
+        <h1>{{task.title}}</h1>
+        <p> {{task.completed}}  created on {{task.created}}</p>
+
+    {% endfor %}
 </body>
 </html>
