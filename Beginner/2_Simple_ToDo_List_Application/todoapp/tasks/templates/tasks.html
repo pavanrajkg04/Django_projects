@@ -6,6 +6,14 @@
     <title>Tasks</title>
 </head>
 <body>
+    <form method="POST" action="/">
+        {% csrf_token %}
+        
+        {{TaskForms.title}}
+
+        <input class="btn" type="submit" name="Create Task">
+
+    </form>
     <h1>This is a task page</h1>
     {% for task in tasks %}
         <h1>{{task.title}}</h1>
