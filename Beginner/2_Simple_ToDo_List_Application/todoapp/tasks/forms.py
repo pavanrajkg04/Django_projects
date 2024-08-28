@@ -4,6 +4,7 @@ from .models import Task
 
 class TaskForm(forms.ModelForm):
     title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Add a new task'}))
+    completed = forms.BooleanField(widget=forms.CheckboxInput())
 
     class Meta:
         model = Task
