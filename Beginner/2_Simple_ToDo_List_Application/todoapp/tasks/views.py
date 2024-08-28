@@ -18,3 +18,16 @@ def home(request):
     context = {'tasks' : tasks , 'TaskForms': form}
 
     return render(request, 'tasks.html', context)
+
+
+def updatetask(request, pk):
+    
+    tasks = Task.objects.get(id=pk)
+    form = TaskForm(instance=task)
+
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
+
+        
+
+    return render(request, 'update_task.html')
