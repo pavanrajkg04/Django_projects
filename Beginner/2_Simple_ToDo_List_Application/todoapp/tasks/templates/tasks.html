@@ -10,7 +10,6 @@
         {% csrf_token %}
         
         {{TaskForms.title}}
-        {{TaskForms.completed}}
 
         <input class="btn" type="submit" name="Create Task">
 
@@ -18,8 +17,15 @@
     <h1>This is a task page</h1>
     {% for task in tasks %}
         <h1>{{task.title}}</h1>
-        <p> {{task.completed}}  created on {{task.created}}</p>
-
+        <h3>
+            {% if not task.completed %}
+                Not completed
+            {% else %}
+                Completed
+            {% endif %}
+        </h3>
+        <a href="{% url 'update_task' task.id  %}""> Update </a> || 
+        <a href="{% url 'delete_task' task.id  %}""> Delete </a>
     {% endfor %}
 </body>
 </html>

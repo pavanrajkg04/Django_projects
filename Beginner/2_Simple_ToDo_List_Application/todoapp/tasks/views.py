@@ -22,12 +22,32 @@ def home(request):
 
 def updatetask(request, pk):
     
-    tasks = Task.objects.get(id=pk)
+    task = Task.objects.get(id=pk)
     form = TaskForm(instance=task)
 
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
 
-        
+        if form.is_valid():
+            form.save()
 
-    return render(request, 'update_task.html')
+            return redirect('/')
+        
+    context = {'TaskForms': form}
+
+    return render(request, 'update_task.html', context)
+
+def deletetask(request,pk):
+
+    task = Task.objects.get(id=pk)
+
+    if request.method == "POST":
+
+        task.delete()
+
+        
+        return redirect('/')
+    
+    context = {'task': task}
+
+    return render(request, 'delete_task.html', context)

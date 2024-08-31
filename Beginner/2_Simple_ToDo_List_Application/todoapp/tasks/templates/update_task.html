@@ -6,6 +6,14 @@
     <title>Update Tasks</title>
 </head>
 <body>
+    <form method="POST" action="">
+        {% csrf_token %}
+        
+        {{TaskForms}}
+
+        <input class="btn" type="submit" name="Update Task">
+
+    </form>
     
 </body>
 </html>
